@@ -22,11 +22,13 @@ const ImageSlider = ({ slides }) => {
 
     return (
         <section className="slider">
-            <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide}/>
-            <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
+            <FaArrowAltCircleLeft className="left-arrow" onClick={ prevSlide }/>
+            <FaArrowAltCircleRight className="right-arrow" onClick={ nextSlide }/>
             {SliderData.map((slide, index) => {
                 return (
-                    <img src={slide.image} alt="New York" className="image"/>
+                    <div className={ index === current ? 'slide active' : 'slide' } key={ index }>
+                        { index === current && (<img src={ slide.image } alt="New York" className="image"/>) }
+                    </div>
                 );
             })}
         </section>
