@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SliderData } from '../data/ImageData';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const ImageSlider = ({ slides }) => {
     const [current, setCurrent] = useState(0);
     const length = slides.length;
+    const timeout = useRef(null);
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);
     }
+
+    timeout.current = setTimeout(nextSlide, 4000);
 
     const prevSlide = () => {
         setCurrent(current === 0 ? length - 1 : current - 1);
